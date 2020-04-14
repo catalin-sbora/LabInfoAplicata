@@ -10,9 +10,35 @@
         <maven.compiler.source>13</maven.compiler.source>
         <maven.compiler.target>13</maven.compiler.target>      
     </properties>
-    <build>
   
-</build>
+    <build>
+          <plugins>
+              <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-antrun-plugin</artifactId>
+                  <executions>
+                      <execution>
+                          <id>copy-files</id>
+                          <phase>package</phase>
+                          <goals>
+                              <goal>run</goal>                                   
+                          </goals>
+                          <configuration>
+                              <tasks>
+                                  <echo>Copy available plugins</echo>
+                                  <copy todir="${pom.basedir}/plugins" overwrite="true">
+                                      <fileset dir="${pom.basedir}/../AppPlugins/CirclePlugin/target" includes="*.jar">
+                                          <include name="*.jar"/>
+                                      </fileset>
+                                  </copy>
+                              </tasks>
+                          </configuration>                        
+                      </execution>
+                  </executions>
+              </plugin>
+          </plugins>
+  </build>
+
     <dependencies>
         <dependency>            
             <groupId>com.ace</groupId>
