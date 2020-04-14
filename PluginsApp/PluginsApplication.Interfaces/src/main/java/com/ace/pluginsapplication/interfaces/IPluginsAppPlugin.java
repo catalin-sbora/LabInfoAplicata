@@ -3,16 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ace.firstsampleproject;
+package com.ace.pluginsapplication.interfaces;
 
 /**
  *
  * @author catalin
  */
-public interface IMenuItem {
-    String getText();
-    int getShortCut();
-    
-    void render();
-    void execute();
+public interface IPluginsAppPlugin {
+     String getUniqueNameText();
+     String getDisplayText();
+     IShape getShape();    
 }
